@@ -9,81 +9,22 @@ namespace Demo.Figures
 {
     public class Figure : MonoBehaviour
     {
+        #region EDIT OPTIONS
         [SerializeField] private List<Colorable> colorableList = null; 
         [SerializeField] private List<Textable> textableList = null;
         [SerializeField] private List<Positinable> movablePlaneList = null;
         [SerializeField] private List<Positinable> movableHeightList = null;
+        #endregion
 
         // injected deps
+        #region INJECTED EDIT DEPENDENCIES
         private EditPage editPage = null;
         private SpawnManager spawnManager = null;
+        #endregion
 
+        #region EDIT OPTIONS
         public int TextebleCount => textableList.Count > 0 ? GetICompositCountableCount<Textable>(textableList) : 0;
         public int ColorableCount => colorableList.Count > 0 ? 1 : 0;
-
-        public void Inject(EditPage editPage, SpawnManager spawnManager)
-        {
-            this.editPage = editPage;
-            this.spawnManager = spawnManager;
-        }
-
-        private void StartEdit()
-        {
-            spawnManager.Close();
-            editPage.Open();
-            ToggleSubscription(true);
-
-        }
-
-        private void OnMouseUp()
-        {
-            StartEdit();
-            editPage.Setup(this);
-        }
-
-        private void DeleteClicked()
-        {
-            ToggleSubscription(false);
-            editPage.Close();
-            spawnManager.StartSpawn();
-            Destroy(gameObject);
-        }
-
-        private void ExitClicked()
-        {
-            ToggleSubscription(false);
-            editPage.Close();
-            spawnManager.StartSpawn();
-        }
-
-        private void EditColorClick(int index)
-        {
-            if (colorableList.Count > 0)
-                colorableList[0].SetColor(0,Color.gray);
-            if (colorableList.Count > 1)
-                colorableList[1].SetColor(0,Color.yellow);
-        }
-
-        private void EditTextClick(int index)
-        {
-            if (textableList.Count > 0)
-                textableList[0].SetText(0, "ffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        }
-
-        private void ToggleSubscription(bool subscribe)
-        {
-            editPage.DeleteAction -= DeleteClicked;
-            editPage.ExitAction -= ExitClicked;
-            editPage.EditColorAction -= EditColorClick;
-            editPage.EditTextAction -= EditTextClick;
-            if (subscribe)
-            {
-                editPage.DeleteAction += DeleteClicked;
-                editPage.ExitAction += ExitClicked;
-                editPage.EditColorAction += EditColorClick;
-                editPage.EditTextAction += EditTextClick;
-            }
-        }
 
         private int GetICompositCountableCount<T>(List<T> colorableList) where T : ICompositeCountable
         {
@@ -111,5 +52,71 @@ namespace Demo.Figures
             localIndex = commonIndex - index;
             return colorableList[colorableIndex];
         }
+        #endregion
+
+        #region UTILS
+
+        private void StartEdit()
+        {
+            spawnManager.Close();
+            editPage.Open();
+        }
+
+        private void OnMouseUp()
+        {
+            StartEdit();
+            editPage.Setup(this);
+        }
+
+        #endregion
+
+        #region API
+
+        public void Inject(EditPage editPage, SpawnManager spawnManager)
+        {
+            this.editPage = editPage;
+            this.spawnManager = spawnManager;
+        }
+
+        public void DeleteFigure()
+        {
+            editPage.Close();
+            spawnManager.StartSpawn();
+            Destroy(gameObject);
+        }
+
+        public void EditExit()
+        {
+            editPage.Close();
+            spawnManager.StartSpawn();
+        }
+
+        public void CancelEdit()
+        {
+
+        }
+
+        public void SetColor(int index, Color color)
+        {
+            colorableList[index].SetColor(0, color);
+        }
+
+        public Color GetColor(int index)
+        {
+            return colorableList[index].GetColor(0);
+        }
+
+        public string GetText(int index)
+        {
+            return textableList[index].GetText();
+        }
+
+        public void SetText(int index, string text)
+        {
+            textableList[index].SetText(index, text);
+        }
+
+        #endregion
+
     }
 }

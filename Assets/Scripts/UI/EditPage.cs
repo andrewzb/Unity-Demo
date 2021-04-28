@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Demo.Figures;
@@ -7,41 +9,58 @@ namespace Demo.UI
 {
     public class EditPage : Page
     {
-        [SerializeField] private Button exitButton = null;
-        [SerializeField] private Button deleteButton = null;
-        [SerializeField] private EditOptionsController colorController = null;
-        [SerializeField] private EditOptionsController textController = null;
-
-        public Action ExitAction;
-        public Action DeleteAction;
-        public Action<int> EditColorAction;
-        public Action<int> EditTextAction;
-
-        protected override void ToggleSubscription(bool subscribe)
-        {
-            exitButton.onClick.RemoveAllListeners();
-            deleteButton.onClick.RemoveAllListeners();
-            colorController.OnButtonClickAction = null;
-            textController.OnButtonClickAction = null;
-            if (subscribe)
-            {
-                exitButton.onClick.AddListener(() => ExitAction?.Invoke());
-                deleteButton.onClick.AddListener(() => DeleteAction?.Invoke());
-                colorController.OnButtonClickAction += ((index) => EditColorAction?.Invoke(index));
-                textController.OnButtonClickAction += ((index) => EditTextAction?.Invoke(index));
-            }
-        }
+        [SerializeField] private List<EditFunctionalityGroup> functionalityGroupsList = null;
+        [SerializeField] private EditFunctionalityGroup cancelFunctionalityGroup = null;
+        [SerializeField] private EditFunctionalityGroup exitFunctionalityGroup = null;
+        [SerializeField] private EditFunctionalityGroup deleteFunctionalityGroup = null;
 
         protected override void SetDefaultState()
         {
-            colorController.Reset();
-            textController.Reset();
+            foreach (var group in functionalityGroupsList)
+            {
+                group.Reset();
+            }
+            cancelFunctionalityGroup.Reset();
+            exitFunctionalityGroup.Reset();
+            deleteFunctionalityGroup.Reset();
         }
 
         public void Setup(Figure figure)
         {
-            colorController.Setup(figure.ColorableCount);
-            textController.Setup(figure.TextebleCount);
+            foreach (var group in functionalityGroupsList)
+            {
+                group.Setup(figure);
+            }
+            cancelFunctionalityGroup.Setup(figure);
+            exitFunctionalityGroup.Setup(figure);
+            deleteFunctionalityGroup.Setup(figure);
+            OpenMode();
+        }
+
+
+        public void OpenMode(EditFunctionalityGroup functionalityGroup = null)
+        {
+            foreach (var group in functionalityGroupsList)
+            {
+                if (functionalityGroup == null)
+                {
+                    group.Show();
+                }
+                else
+                {
+                    if (group == functionalityGroup)
+                    group.Open();
+                else
+                    group.Hide();
+                }
+            }
+            exitFunctionalityGroup.Show();
+            deleteFunctionalityGroup.Show();
+            if (functionalityGroup == null)
+                cancelFunctionalityGroup.Hide();
+            else
+                cancelFunctionalityGroup.Show();
+
         }
     }
 }

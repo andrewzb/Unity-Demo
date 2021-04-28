@@ -1,0 +1,52 @@
+ManifestFileVersion: 0
+CRC: 1918614540
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f24a707aea57b0521758978576fb2887
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 659757e2ffbd1322e1b1ca544fe72b16
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 81bad75d138e45a458c4f9b4fb35d342, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a288f17adfb0ebd43ad353bca174d333, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 41331f1b14baadc4aa564ac2d8e5c5f5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6943afdd75b91da4c829627f9731f5e6, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetBundles/Sourse/A1/figure.prefab
+- Assets/AssetBundles/Sourse/A1/material.mat
+Dependencies: []

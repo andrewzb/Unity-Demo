@@ -1,16 +1,16 @@
 ManifestFileVersion: 0
-CRC: 1081158755
+CRC: 1067710374
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: capsule
+      Name: a1
       Dependencies: {}
     Info_1:
-      Name: cube
+      Name: a2
       Dependencies: {}
     Info_2:
-      Name: sphere
+      Name: a3
       Dependencies: {}
     Info_3:
-      Name: plane
+      Name: a4
       Dependencies: {}

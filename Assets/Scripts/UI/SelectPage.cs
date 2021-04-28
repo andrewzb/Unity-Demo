@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Demo.Figures;
-using Demo.BundleLoader.Types;
+using Demo.Types.BundleTypes;
 
 
 namespace Demo.UI
@@ -14,7 +13,7 @@ namespace Demo.UI
         [SerializeField] private Button planButton = null;
         [SerializeField] private Button sphereButton = null;
 
-        public Action<BundleLoaderTypes> SelectFigureAction;
+        public Action<BundleTypes> SelectFigureAction;
 
         protected override void ToggleSubscription(bool subscribe)
         {
@@ -24,14 +23,14 @@ namespace Demo.UI
             sphereButton.onClick.RemoveAllListeners();
             if (subscribe)
             {
-                cubeButton.onClick.AddListener(() => OnSpawnButtonClicked(BundleLoaderTypes.cube));
-                capsuleButton.onClick.AddListener(() => OnSpawnButtonClicked(BundleLoaderTypes.capsule));
-                planButton.onClick.AddListener(() => OnSpawnButtonClicked(BundleLoaderTypes.plane));
-                sphereButton.onClick.AddListener(() => OnSpawnButtonClicked(BundleLoaderTypes.sphere));
+                cubeButton.onClick.AddListener(() => OnSpawnButtonClicked(BundleTypes.A1));
+                capsuleButton.onClick.AddListener(() => OnSpawnButtonClicked(BundleTypes.A2));
+                planButton.onClick.AddListener(() => OnSpawnButtonClicked(BundleTypes.A3));
+                sphereButton.onClick.AddListener(() => OnSpawnButtonClicked(BundleTypes.A4));
             }
         }
 
-        private void OnSpawnButtonClicked(BundleLoaderTypes types)
+        private void OnSpawnButtonClicked(BundleTypes types)
         {
             SelectFigureAction?.Invoke(types);
         }

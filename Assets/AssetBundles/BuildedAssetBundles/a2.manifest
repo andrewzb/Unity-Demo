@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 2652334275
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c01c205e7126ba6eddc7d18f20ce476a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5537aad3865a88669c7cb42b89879e9f
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 41331f1b14baadc4aa564ac2d8e5c5f5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6943afdd75b91da4c829627f9731f5e6, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetBundles/Sourse/A2/figure.prefab
+- Assets/AssetBundles/Sourse/A2/material.mat
+Dependencies: []

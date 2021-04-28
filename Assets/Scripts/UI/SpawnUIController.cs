@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Demo.Figures;
-using Demo.BundleLoader.Types;
+using Demo.Types.BundleTypes;
 
 namespace Demo.UI
 {
@@ -11,9 +11,9 @@ namespace Demo.UI
     {
         [SerializeField] private SelectPage selectPage = null;
         [SerializeField] private SpawnPage spawnPage = null;
-        private BundleLoaderTypes spawnType = BundleLoaderTypes.none;
+        private BundleTypes spawnType = BundleTypes.none;
 
-       public Action<BundleLoaderTypes> ActionOnSpawnAction;
+       public Action<BundleTypes> ActionOnSpawnAction;
 
         private void Awake()
         {
@@ -26,7 +26,7 @@ namespace Demo.UI
         {
             selectPage.Open();
             spawnPage.Close();
-            spawnType = BundleLoaderTypes.none;
+            spawnType = BundleTypes.none;
         }
 
         public void Close()
@@ -35,7 +35,7 @@ namespace Demo.UI
             spawnPage.Close();
         }
 
-        private void OnSelectButtonClicked(BundleLoaderTypes type)
+        private void OnSelectButtonClicked(BundleTypes type)
         {
             spawnType = type;
             selectPage.Close();
@@ -49,7 +49,7 @@ namespace Demo.UI
 
         private void OnCancelClicked()
         {
-            spawnType = BundleLoaderTypes.none;
+            spawnType = BundleTypes.none;
             StartSpawn();
         }
 
